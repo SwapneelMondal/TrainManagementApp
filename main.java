@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.LinkedList;
+import java.util.LinkedHashSet;
 
 public class main {
 
@@ -27,22 +28,17 @@ public class main {
 
         System.out.println("\n--- Adding Passenger Bogies ---");
 
-        // Add bogies
         trainConsist.add("Sleeper");
         trainConsist.add("AC Chair");
         trainConsist.add("First Class");
 
-        // Display bogies after addition
         System.out.println("Bogies after addition: " + trainConsist);
 
-        // Remove a bogie (AC Chair)
         System.out.println("\nRemoving 'AC Chair' bogie...");
         trainConsist.remove("AC Chair");
 
-        // Display after removal
         System.out.println("Bogies after removal: " + trainConsist);
 
-        // Check if Sleeper exists
         System.out.println("\nChecking if 'Sleeper' exists...");
         if (trainConsist.contains("Sleeper")) {
             System.out.println("Sleeper bogie is present in the train.");
@@ -50,7 +46,6 @@ public class main {
             System.out.println("Sleeper bogie is NOT present.");
         }
 
-        // Final state
         System.out.println("\nFinal Train Consist: " + trainConsist);
 
         // =========================
@@ -59,17 +54,14 @@ public class main {
 
         System.out.println("\n--- Tracking Unique Bogie IDs ---");
 
-        // Create HashSet for unique bogie IDs
         Set<String> bogieIds = new HashSet<>();
 
-        // Add bogie IDs (with duplicates intentionally)
         bogieIds.add("BG101");
         bogieIds.add("BG102");
         bogieIds.add("BG103");
         bogieIds.add("BG101"); // duplicate
         bogieIds.add("BG102"); // duplicate
 
-        // Display unique bogie IDs
         System.out.println("Unique Bogie IDs: " + bogieIds);
 
         // =========================
@@ -78,10 +70,8 @@ public class main {
 
         System.out.println("\n--- Maintaining Ordered Train Consist ---");
 
-        // Create LinkedList for ordered consist
         LinkedList<String> orderedConsist = new LinkedList<>();
 
-        // Add bogies
         orderedConsist.add("Engine");
         orderedConsist.add("Sleeper");
         orderedConsist.add("AC");
@@ -90,16 +80,34 @@ public class main {
 
         System.out.println("Initial Train Order: " + orderedConsist);
 
-        // Insert Pantry Car at position 2
         orderedConsist.add(2, "Pantry");
 
         System.out.println("After adding Pantry at position 2: " + orderedConsist);
 
-        // Remove first and last bogie
         orderedConsist.removeFirst();
         orderedConsist.removeLast();
 
-        // Final state
         System.out.println("Final Ordered Train Consist: " + orderedConsist);
+
+        // =========================
+        // ✅ UC5: Preserve Insertion Order + Uniqueness (LinkedHashSet)
+        // =========================
+
+        System.out.println("\n--- Maintaining Ordered Unique Train Formation ---");
+
+        // Create LinkedHashSet
+        LinkedHashSet<String> formation = new LinkedHashSet<>();
+
+        // Add bogies
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+
+        // Attempt duplicate
+        formation.add("Sleeper"); // will be ignored
+
+        // Display final formation
+        System.out.println("Final Train Formation: " + formation);
     }
 }
