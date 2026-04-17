@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.LinkedList;
 
 public class main {
 
@@ -70,5 +71,35 @@ public class main {
 
         // Display unique bogie IDs
         System.out.println("Unique Bogie IDs: " + bogieIds);
+
+        // =========================
+        // ✅ UC4: Maintain Ordered Train Consist (LinkedList)
+        // =========================
+
+        System.out.println("\n--- Maintaining Ordered Train Consist ---");
+
+        // Create LinkedList for ordered consist
+        LinkedList<String> orderedConsist = new LinkedList<>();
+
+        // Add bogies
+        orderedConsist.add("Engine");
+        orderedConsist.add("Sleeper");
+        orderedConsist.add("AC");
+        orderedConsist.add("Cargo");
+        orderedConsist.add("Guard");
+
+        System.out.println("Initial Train Order: " + orderedConsist);
+
+        // Insert Pantry Car at position 2
+        orderedConsist.add(2, "Pantry");
+
+        System.out.println("After adding Pantry at position 2: " + orderedConsist);
+
+        // Remove first and last bogie
+        orderedConsist.removeFirst();
+        orderedConsist.removeLast();
+
+        // Final state
+        System.out.println("Final Ordered Train Consist: " + orderedConsist);
     }
 }
