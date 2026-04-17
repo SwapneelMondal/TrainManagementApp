@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-// ✅ UC11
+// UC11
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -162,7 +162,6 @@ public class main {
         goodsList.add(new GoodsBogie("Open", "Coal"));
         goodsList.add(new GoodsBogie("Box", "Grain"));
 
-        // 🔥 Rule check using allMatch
         boolean isSafe = goodsList.stream()
                 .allMatch(b ->
                         !b.type.equals("Cylindrical") ||
@@ -174,6 +173,47 @@ public class main {
         } else {
             System.out.println("❌ Train is NOT SAFE");
         }
+
+        // =========================
+        // UC13: Performance Comparison
+        // =========================
+
+        System.out.println("\n--- Performance Comparison (Loop vs Stream) ---");
+
+        List<Bogie> largeList = new ArrayList<>();
+
+        for (int i = 0; i < 100000; i++) {
+            largeList.add(new Bogie("Type" + i, (i % 100)));
+        }
+
+        // Loop
+        long startLoop = System.nanoTime();
+
+        List<Bogie> loopResult = new ArrayList<>();
+        for (Bogie b : largeList) {
+            if (b.capacity > 60) {
+                loopResult.add(b);
+            }
+        }
+
+        long endLoop = System.nanoTime();
+        long loopTime = endLoop - startLoop;
+
+        // Stream
+        long startStream = System.nanoTime();
+
+        List<Bogie> streamResult = largeList.stream()
+                .filter(b -> b.capacity > 60)
+                .toList();
+
+        long endStream = System.nanoTime();
+        long streamTime = endStream - startStream;
+
+        System.out.println("Loop Time (ns): " + loopTime);
+        System.out.println("Stream Time (ns): " + streamTime);
+
+        System.out.println("Loop Result Size: " + loopResult.size());
+        System.out.println("Stream Result Size: " + streamResult.size());
 
         sc.close();
     }
@@ -190,7 +230,7 @@ class Bogie {
     }
 }
 
-// ✅ New class for UC12
+// Goods Bogie (UC12)
 class GoodsBogie {
     String type;
     String cargo;
