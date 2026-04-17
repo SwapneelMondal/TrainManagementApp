@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.LinkedHashSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class main {
 
@@ -137,7 +138,6 @@ public class main {
         bogieList.add(new Bogie("AC Chair", 54));
         bogieList.add(new Bogie("First Class", 24));
 
-        // Sort by capacity (ascending)
         bogieList.sort((b1, b2) -> Integer.compare(b1.capacity, b2.capacity));
 
         System.out.println("Bogies sorted by capacity:");
@@ -159,11 +159,28 @@ public class main {
         for (Bogie b : filteredBogies) {
             System.out.println(b.name + " | Capacity: " + b.capacity);
         }
+
+        // =========================
+        // ✅ UC9: Group Bogies by Type
+        // =========================
+
+        System.out.println("\n--- Grouping Bogies by Type ---");
+
+        Map<String, List<Bogie>> groupedBogies = bogieList.stream()
+                .collect(Collectors.groupingBy(b -> b.name));
+
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+            System.out.println("Type: " + entry.getKey());
+
+            for (Bogie b : entry.getValue()) {
+                System.out.println("   " + b.name + " | Capacity: " + b.capacity);
+            }
+        }
     }
 }
 
 // =========================
-// ✅ Bogie Class (UC7 & UC8)
+// ✅ Bogie Class
 // =========================
 class Bogie {
     String name;
