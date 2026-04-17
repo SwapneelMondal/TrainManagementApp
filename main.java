@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.LinkedList;
 import java.util.LinkedHashSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class main {
 
@@ -95,19 +97,35 @@ public class main {
 
         System.out.println("\n--- Maintaining Ordered Unique Train Formation ---");
 
-        // Create LinkedHashSet
         LinkedHashSet<String> formation = new LinkedHashSet<>();
 
-        // Add bogies
         formation.add("Engine");
         formation.add("Sleeper");
         formation.add("Cargo");
         formation.add("Guard");
 
-        // Attempt duplicate
-        formation.add("Sleeper"); // will be ignored
+        formation.add("Sleeper"); // duplicate ignored
 
-        // Display final formation
         System.out.println("Final Train Formation: " + formation);
+
+        // =========================
+        // ✅ UC6: Map Bogie to Capacity (HashMap)
+        // =========================
+
+        System.out.println("\n--- Mapping Bogies to Capacity ---");
+
+        // Create HashMap
+        Map<String, Integer> bogieCapacity = new HashMap<>();
+
+        // Add bogie-capacity mappings
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 54);
+        bogieCapacity.put("First Class", 24);
+
+        // Display mapping using entrySet()
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey() +
+                    " | Capacity: " + entry.getValue());
+        }
     }
 }
