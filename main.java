@@ -17,5 +17,37 @@ public class main {
 
         // Program continues...
         System.out.println("System is ready for further operations.");
+
+        // =========================
+        // ✅ UC2: Add Passenger Bogies
+        // =========================
+
+        System.out.println("\n--- Adding Passenger Bogies ---");
+
+        // Add bogies
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC Chair");
+        trainConsist.add("First Class");
+
+        // Display bogies after addition
+        System.out.println("Bogies after addition: " + trainConsist);
+
+        // Remove a bogie (AC Chair)
+        System.out.println("\nRemoving 'AC Chair' bogie...");
+        trainConsist.remove("AC Chair");
+
+        // Display after removal
+        System.out.println("Bogies after removal: " + trainConsist);
+
+        // Check if Sleeper exists
+        System.out.println("\nChecking if 'Sleeper' exists...");
+        if (trainConsist.contains("Sleeper")) {
+            System.out.println("Sleeper bogie is present in the train.");
+        } else {
+            System.out.println("Sleeper bogie is NOT present.");
+        }
+
+        // Final state
+        System.out.println("\nFinal Train Consist: " + trainConsist);
     }
 }
