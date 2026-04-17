@@ -176,6 +176,18 @@ public class main {
                 System.out.println("   " + b.name + " | Capacity: " + b.capacity);
             }
         }
+
+        // =========================
+        // ✅ UC10: Total Seat Calculation (reduce)
+        // =========================
+
+        System.out.println("\n--- Calculating Total Seating Capacity ---");
+
+        int totalSeats = bogieList.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
+
+        System.out.println("Total Seating Capacity of Train: " + totalSeats);
     }
 }
 
