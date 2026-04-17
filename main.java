@@ -144,11 +144,26 @@ public class main {
         for (Bogie b : bogieList) {
             System.out.println(b.name + " | Capacity: " + b.capacity);
         }
+
+        // =========================
+        // ✅ UC8: Filter Bogies Using Streams
+        // =========================
+
+        System.out.println("\n--- Filtering High Capacity Bogies (> 60) ---");
+
+        List<Bogie> filteredBogies = bogieList.stream()
+                .filter(b -> b.capacity > 60)
+                .toList();
+
+        System.out.println("Filtered Bogies:");
+        for (Bogie b : filteredBogies) {
+            System.out.println(b.name + " | Capacity: " + b.capacity);
+        }
     }
 }
 
 // =========================
-// ✅ Bogie Class (UC7)
+// ✅ Bogie Class (UC7 & UC8)
 // =========================
 class Bogie {
     String name;
