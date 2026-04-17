@@ -114,18 +114,48 @@ public class main {
 
         System.out.println("\n--- Mapping Bogies to Capacity ---");
 
-        // Create HashMap
         Map<String, Integer> bogieCapacity = new HashMap<>();
 
-        // Add bogie-capacity mappings
         bogieCapacity.put("Sleeper", 72);
         bogieCapacity.put("AC Chair", 54);
         bogieCapacity.put("First Class", 24);
 
-        // Display mapping using entrySet()
         for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
             System.out.println("Bogie: " + entry.getKey() +
                     " | Capacity: " + entry.getValue());
         }
+
+        // =========================
+        // ✅ UC7: Sort Bogies by Capacity (Comparator)
+        // =========================
+
+        System.out.println("\n--- Sorting Bogies by Capacity ---");
+
+        List<Bogie> bogieList = new ArrayList<>();
+
+        bogieList.add(new Bogie("Sleeper", 72));
+        bogieList.add(new Bogie("AC Chair", 54));
+        bogieList.add(new Bogie("First Class", 24));
+
+        // Sort by capacity (ascending)
+        bogieList.sort((b1, b2) -> Integer.compare(b1.capacity, b2.capacity));
+
+        System.out.println("Bogies sorted by capacity:");
+        for (Bogie b : bogieList) {
+            System.out.println(b.name + " | Capacity: " + b.capacity);
+        }
+    }
+}
+
+// =========================
+// ✅ Bogie Class (UC7)
+// =========================
+class Bogie {
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
     }
 }
