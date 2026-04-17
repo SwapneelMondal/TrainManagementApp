@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class main {
 
@@ -49,5 +51,24 @@ public class main {
 
         // Final state
         System.out.println("\nFinal Train Consist: " + trainConsist);
+
+        // =========================
+        // ✅ UC3: Track Unique Bogie IDs
+        // =========================
+
+        System.out.println("\n--- Tracking Unique Bogie IDs ---");
+
+        // Create HashSet for unique bogie IDs
+        Set<String> bogieIds = new HashSet<>();
+
+        // Add bogie IDs (with duplicates intentionally)
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
+        bogieIds.add("BG101"); // duplicate
+        bogieIds.add("BG102"); // duplicate
+
+        // Display unique bogie IDs
+        System.out.println("Unique Bogie IDs: " + bogieIds);
     }
 }
